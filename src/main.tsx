@@ -4,45 +4,51 @@ import "./index.css";
 import App from "./App.tsx";
 import { ConfigProvider } from "antd";
 
+export const primaryColor: string = "#424242";
+export const secondaryColor: string = "#212121";
+export const accentColor: string = "#303030";
+export const contentColor: string = "white";
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ConfigProvider
       theme={{
         token: {
           fontSizeHeading1: 42,
-          colorText: "white",
-          colorBgBase: "#212121",
-          colorBgContainer: "#303030",
-          colorPrimary: "#303030",
+          colorText: contentColor,
+          colorBgBase: secondaryColor,
+          colorBgContainer: accentColor,
+          colorPrimary: accentColor,
         },
         components: {
           Layout: {
-            headerBg: "#424242",
+            headerBg: primaryColor,
             headerPadding: 16,
-            footerBg: "#424242",
+            footerBg: primaryColor,
             footerPadding: 16,
-            siderBg: "#303030",
+            siderBg: accentColor,
           },
           Button: {
             controlOutline: "none",
-            colorPrimary: "#212121",
+            colorPrimary: secondaryColor,
             colorPrimaryHover: "black",
             defaultBg: "transparent",
-            defaultActiveBg: "#212121",
-            defaultHoverBg: "#212121",
+            defaultActiveBg: secondaryColor,
+            defaultHoverBg: secondaryColor,
             defaultBorderColor: "transparent",
             defaultActiveBorderColor: "transparent",
             defaultHoverBorderColor: "transparent",
-            defaultColor: "white",
-            defaultActiveColor: "white",
-            defaultHoverColor: "white",
-            primaryColor: "white",
+            defaultColor: contentColor,
+            defaultActiveColor: contentColor,
+            defaultHoverColor: contentColor,
+            primaryColor: contentColor,
           },
           Slider: {
-            trackBg: "white",
-            trackHoverBg: "white",
-            railBg: "#212121",
-            railHoverBg: "#212121",
+            trackBg: contentColor,
+            trackHoverBg: contentColor,
+            railBg: secondaryColor,
+            railHoverBg: secondaryColor,
+            handleColor: accentColor,
           },
         },
       }}
