@@ -31,6 +31,7 @@ export const HomePage: FC = () => {
       audioRef: audioRef,
       isPlaying: isPlaying,
       setPlaying: setPlaying,
+      volume: volume,
     },
     {
       id: "2",
@@ -40,6 +41,7 @@ export const HomePage: FC = () => {
       coverPath: songCover2,
       audioRef: audioRef,
       isPlaying: isPlaying,
+      volume: volume,
       setPlaying: setPlaying,
     },
     {
@@ -50,6 +52,7 @@ export const HomePage: FC = () => {
       coverPath: songCover3,
       audioRef: audioRef,
       isPlaying: isPlaying,
+      volume: volume,
       setPlaying: setPlaying,
     },
     {
@@ -60,6 +63,7 @@ export const HomePage: FC = () => {
       coverPath: songCover4,
       audioRef: audioRef,
       isPlaying: isPlaying,
+      volume: volume,
       setPlaying: setPlaying,
     },
   ];

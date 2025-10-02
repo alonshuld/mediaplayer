@@ -17,6 +17,7 @@ export interface SongCardProps extends Song {
   audioRef: React.RefObject<HTMLAudioElement | null>;
   isPlaying: boolean;
   setPlaying: (playing: boolean) => void;
+  volume: number;
 }
 
 export const SongCard: FC<SongCardProps> = ({
@@ -26,22 +27,23 @@ export const SongCard: FC<SongCardProps> = ({
   coverPath,
   audioRef,
   setPlaying,
+  volume,
 }) => {
   const [hovered, setHovered] = useState(false);
 
-  const handlePlay = (setPlaying: (playing: boolean) => void) => {
-    let volume = -1;
+  const handlePlay = (
+    setPlaying: (playing: boolean) => void,
+    volume: number
+  ) => {
     if (audioRef.current) {
       setPlaying(false);
-      volume = audioRef.current.volume;
       audioRef.current.pause();
-      audioRef.current.currentTime = 0;
       audioRef.current = null;
     }
+    setPlaying(true);
     audioRef.current = new Audio(songPath);
     audioRef.current.play();
-    if (volume !== -1) audioRef.current.volume = volume;
-    setPlaying(true);
+    audioRef.current.volume = volume;
   };
 
   return (
@@ -66,7 +68,7 @@ export const SongCard: FC<SongCardProps> = ({
               icon={<PlayCircle size={64} />}
               shape="circle"
               size="large"
-              onClick={() => handlePlay(setPlaying)}
+              onClick={() => handlePlay(setPlaying, volume)}
             />
           )}
         </div>
