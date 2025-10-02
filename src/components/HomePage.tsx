@@ -21,6 +21,49 @@ export const HomePage: FC = () => {
   const [isRepeat, setRepeat] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  const songs = [
+    {
+      id: "1",
+      title: "הספר הכחול",
+      artist: "פאר טסי",
+      songPath: songFile1,
+      coverPath: songCover1,
+      audioRef: audioRef,
+      isPlaying: isPlaying,
+      setPlaying: setPlaying,
+    },
+    {
+      id: "2",
+      title: "תסמינים של פרידה",
+      artist: "עומר אדם",
+      songPath: songFile2,
+      coverPath: songCover2,
+      audioRef: audioRef,
+      isPlaying: isPlaying,
+      setPlaying: setPlaying,
+    },
+    {
+      id: "3",
+      title: "עד אחרי הנצח",
+      artist: "פאר טסי",
+      songPath: songFile3,
+      coverPath: songCover3,
+      audioRef: audioRef,
+      isPlaying: isPlaying,
+      setPlaying: setPlaying,
+    },
+    {
+      id: "4",
+      title: "מה יהיה מחר",
+      artist: "פאר טסי",
+      songPath: songFile4,
+      coverPath: songCover4,
+      audioRef: audioRef,
+      isPlaying: isPlaying,
+      setPlaying: setPlaying,
+    },
+  ];
+
   return (
     <Layout className="HomePage">
       <Layout.Header
@@ -38,7 +81,7 @@ export const HomePage: FC = () => {
             marginRight: showQueue ? 0 : 8,
           }}
         >
-          Sider
+          Songs Queue
         </Layout.Sider>
         <Layout.Content
           style={{
@@ -47,50 +90,7 @@ export const HomePage: FC = () => {
             backgroundColor: "#121212",
           }}
         >
-          <SongList
-            songsCardProps={[
-              {
-                id: "1",
-                title: "הספר הכחול",
-                artist: "פאר טסי",
-                songPath: songFile1,
-                coverPath: songCover1,
-                audioRef: audioRef,
-                isPlaying: isPlaying,
-                setPlaying: setPlaying,
-              },
-              {
-                id: "2",
-                title: "תסמינים של פרידה",
-                artist: "עומר אדם",
-                songPath: songFile2,
-                coverPath: songCover2,
-                audioRef: audioRef,
-                isPlaying: isPlaying,
-                setPlaying: setPlaying,
-              },
-              {
-                id: "3",
-                title: "עד אחרי הנצח",
-                artist: "פאר טסי",
-                songPath: songFile3,
-                coverPath: songCover3,
-                audioRef: audioRef,
-                isPlaying: isPlaying,
-                setPlaying: setPlaying,
-              },
-              {
-                id: "4",
-                title: "מה יהיה מחר",
-                artist: "פאר טסי",
-                songPath: songFile4,
-                coverPath: songCover4,
-                audioRef: audioRef,
-                isPlaying: isPlaying,
-                setPlaying: setPlaying,
-              },
-            ]}
-          />
+          <SongList songsCardProps={songs} />
         </Layout.Content>
       </Layout>
       <Layout.Footer

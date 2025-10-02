@@ -30,14 +30,17 @@ export const SongCard: FC<SongCardProps> = ({
   const [hovered, setHovered] = useState(false);
 
   const handlePlay = (setPlaying: (playing: boolean) => void) => {
+    let volume = -1;
     if (audioRef.current) {
       setPlaying(false);
+      volume = audioRef.current.volume;
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
       audioRef.current = null;
     }
     audioRef.current = new Audio(songPath);
     audioRef.current.play();
+    if (volume !== -1) audioRef.current.volume = volume;
     setPlaying(true);
   };
 
