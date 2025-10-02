@@ -97,9 +97,9 @@ export const HomePage: FC = () => {
         style={{ borderRadius: 16, overflow: "hidden", margin: 8 }}
       >
         <Footer
-          collapsedSider={showQueue}
-          setCollapsedSider={setShowQueue}
-          playerProps={{ audioRef, isPlaying, setIsPlaying: setPlaying }}
+          showQueue={showQueue}
+          setShowQueue={setShowQueue}
+          playerProps={{ audioRef, isPlaying, setPlaying }}
           volumeProps={{ volume, setVolume, audioRef }}
           queueSettingsProps={{ isRepeat, setRepeat, isShuffle, setShuffle }}
         />

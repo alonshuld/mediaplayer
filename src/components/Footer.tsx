@@ -7,16 +7,16 @@ import "./Footer.css";
 import { QueueSettings, type QueueSettingsProps } from "./QueueSettings";
 
 export interface FooterProps {
-  collapsedSider: boolean;
-  setCollapsedSider: (collapsed: boolean) => void;
+  showQueue: boolean;
+  setShowQueue: (collapsed: boolean) => void;
   playerProps: PlayerProps;
   volumeProps: VolumeProps;
   queueSettingsProps: QueueSettingsProps;
 }
 
 export const Footer: FC<FooterProps> = ({
-  collapsedSider,
-  setCollapsedSider,
+  showQueue,
+  setShowQueue,
   playerProps,
   volumeProps,
   queueSettingsProps,
@@ -26,8 +26,8 @@ export const Footer: FC<FooterProps> = ({
       <div className="Footer-left">
         <Button
           icon={<ListMusic />}
-          onClick={() => setCollapsedSider(!collapsedSider)}
-          type={collapsedSider ? "default" : "primary"}
+          onClick={() => setShowQueue(!showQueue)}
+          type={showQueue ? "default" : "primary"}
         />
       </div>
       <div className="Footer-center">

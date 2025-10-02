@@ -6,13 +6,13 @@ import "./Player.css";
 export interface PlayerProps {
   audioRef: RefObject<HTMLAudioElement | null>;
   isPlaying: boolean;
-  setIsPlaying: (playing: boolean) => void;
+  setPlaying: (playing: boolean) => void;
 }
 
 export const Player: FC<PlayerProps> = ({
   audioRef,
   isPlaying,
-  setIsPlaying: setPlaying,
+  setPlaying: setPlaying,
 }) => {
   useEffect(() => {
     const audio = audioRef.current;
