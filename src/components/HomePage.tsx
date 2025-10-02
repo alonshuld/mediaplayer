@@ -1,4 +1,4 @@
-import { type FC, useState } from "react";
+import { type FC, useState, useRef } from "react";
 import { Layout } from "antd";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
@@ -19,6 +19,7 @@ export const HomePage: FC = () => {
   const [volume, setVolume] = useState(50);
   const [isShuffle, setShuffle] = useState(false);
   const [isRepeat, setRepeat] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   return (
     <Layout className="HomePage">
@@ -47,13 +48,14 @@ export const HomePage: FC = () => {
           }}
         >
           <SongList
-            songs={[
+            songsCardProps={[
               {
                 id: "1",
                 title: "הספר הכחול",
                 artist: "פאר טסי",
                 songPath: songFile1,
                 coverPath: songCover1,
+                audioRef: audioRef,
               },
               {
                 id: "2",
@@ -61,6 +63,7 @@ export const HomePage: FC = () => {
                 artist: "עומר אדם",
                 songPath: songFile2,
                 coverPath: songCover2,
+                audioRef: audioRef,
               },
               {
                 id: "3",
@@ -68,6 +71,7 @@ export const HomePage: FC = () => {
                 artist: "פאר טסי",
                 songPath: songFile3,
                 coverPath: songCover3,
+                audioRef: audioRef,
               },
               {
                 id: "4",
@@ -75,6 +79,7 @@ export const HomePage: FC = () => {
                 artist: "פאר טסי",
                 songPath: songFile4,
                 coverPath: songCover4,
+                audioRef: audioRef,
               },
             ]}
           />

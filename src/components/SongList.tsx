@@ -1,16 +1,16 @@
 import { type FC } from "react";
 import { Space } from "antd";
-import { SongCard, type Song } from "./SongCard";
+import { SongCard, type SongCardProps } from "./SongCard";
 
 export interface SongListProps {
-  songs: Song[];
+  songsCardProps: SongCardProps[];
 }
 
-export const SongList: FC<SongListProps> = ({ songs }) => {
+export const SongList: FC<SongListProps> = ({ songsCardProps }) => {
   return (
     <Space wrap>
-      {songs.map((song) => (
-        <SongCard key={song.id} {...song} />
+      {songsCardProps.map((songCardProps) => (
+        <SongCard key={songCardProps.id} {...songCardProps} />
       ))}
     </Space>
   );

@@ -1,4 +1,4 @@
-import { type FC, useState, useRef } from "react";
+import { type FC, useState } from "react";
 import { Card, Image, Typography, Button } from "antd";
 import { PlayCircle } from "lucide-react";
 import "./SongCard.css";
@@ -13,14 +13,26 @@ export interface Song {
   coverPath: string;
 }
 
-export const SongCard: FC<Song> = ({ title, artist, songPath, coverPath }) => {
+export interface SongCardProps extends Song {
+  audioRef: React.RefObject<HTMLAudioElement | null>;
+}
+
+export const SongCard: FC<SongCardProps> = ({
+  title,
+  artist,
+  songPath,
+  coverPath,
+  audioRef,
+}) => {
   const [hovered, setHovered] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const handlePlay = () => {
-    if (!audioRef.current) {
-      audioRef.current = new Audio(songPath);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      audioRef.current = null;
     }
+    audioRef.current = new Audio(songPath);
     audioRef.current.play();
   };
 
