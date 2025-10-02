@@ -1,0 +1,10 @@
+.SongCard {
+    width: 175px;
+    height: 250px;
+    padding: 8px;
+    margin: 8px;
+}
+
+.SongCard:hover {
+    background-color: var(--primary-color);
+}

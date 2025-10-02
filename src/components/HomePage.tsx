@@ -2,6 +2,9 @@ import { type FC, useState } from "react";
 import { Layout } from "antd";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { SongList } from "./SongList";
+import songCover from "../assets/songs/1.png";
+import songFile from "../assets/songs/1.mp3";
 import "./HomePage.css";
 
 export const HomePage: FC = () => {
@@ -37,7 +40,31 @@ export const HomePage: FC = () => {
             backgroundColor: "#121212",
           }}
         >
-          Content
+          <SongList
+            songs={[
+              {
+                id: "1",
+                title: "הספר הכחול",
+                artist: "פאר טסי",
+                songPath: songFile,
+                coverPath: songCover,
+              },
+              {
+                id: "2",
+                title: "תסמינים של פרידה",
+                artist: "עומר אדם",
+                songPath: songFile,
+                coverPath: songCover,
+              },
+              {
+                id: "3",
+                title: "עד אחרי הנצח",
+                artist: "פאר טסי",
+                songPath: songFile,
+                coverPath: songCover,
+              },
+            ]}
+          />
         </Layout.Content>
       </Layout>
       <Layout.Footer

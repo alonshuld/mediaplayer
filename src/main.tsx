@@ -15,6 +15,8 @@ createRoot(document.getElementById("root")!).render(
       theme={{
         token: {
           fontSizeHeading1: 42,
+          fontSizeHeading2: 14,
+          fontSizeHeading3: 12,
           colorText: contentColor,
           colorBgBase: secondaryColor,
           colorBgContainer: accentColor,
@@ -49,6 +51,14 @@ createRoot(document.getElementById("root")!).render(
             railBg: secondaryColor,
             railHoverBg: secondaryColor,
             handleColor: accentColor,
+          },
+          Card: {
+            colorBorder: "transparent",
+            colorBgContainer: "transparent",
+            colorTextDescription: contentColor,
+            colorBgSolidHover: primaryColor,
+            colorBgElevated: primaryColor,
+            fontSize: 12,
           },
         },
       }}
