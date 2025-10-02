@@ -15,8 +15,8 @@ createRoot(document.getElementById("root")!).render(
       theme={{
         token: {
           fontSizeHeading1: 42,
-          fontSizeHeading2: 14,
-          fontSizeHeading3: 12,
+          fontSizeHeading2: 16,
+          fontSizeHeading3: 14,
           colorText: contentColor,
           colorBgBase: secondaryColor,
           colorBgContainer: accentColor,
