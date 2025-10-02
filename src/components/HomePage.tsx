@@ -14,7 +14,8 @@ import songFile4 from "../assets/songs/4.mp3";
 import "./HomePage.css";
 
 export const HomePage: FC = () => {
-  const [collapsedSider, setCollapsedSider] = useState(true);
+  const [isPlaying, setPlaying] = useState(false);
+  const [showQueue, setShowQueue] = useState(true);
   const [volume, setVolume] = useState(50);
   const [isShuffle, setShuffle] = useState(false);
   const [isRepeat, setRepeat] = useState(false);
@@ -29,12 +30,12 @@ export const HomePage: FC = () => {
       </Layout.Header>
       <Layout style={{ marginInline: 8 }}>
         <Layout.Sider
-          collapsed={collapsedSider}
+          collapsed={showQueue}
           collapsedWidth={0}
           style={{
             borderRadius: 16,
             overflow: "hidden",
-            marginRight: collapsedSider ? 0 : 8,
+            marginRight: showQueue ? 0 : 8,
           }}
         >
           Sider
@@ -55,6 +56,8 @@ export const HomePage: FC = () => {
                 songPath: songFile1,
                 coverPath: songCover1,
                 audioRef: audioRef,
+                isPlaying: isPlaying,
+                setPlaying: setPlaying,
               },
               {
                 id: "2",
@@ -63,6 +66,8 @@ export const HomePage: FC = () => {
                 songPath: songFile2,
                 coverPath: songCover2,
                 audioRef: audioRef,
+                isPlaying: isPlaying,
+                setPlaying: setPlaying,
               },
               {
                 id: "3",
@@ -71,6 +76,8 @@ export const HomePage: FC = () => {
                 songPath: songFile3,
                 coverPath: songCover3,
                 audioRef: audioRef,
+                isPlaying: isPlaying,
+                setPlaying: setPlaying,
               },
               {
                 id: "4",
@@ -79,6 +86,8 @@ export const HomePage: FC = () => {
                 songPath: songFile4,
                 coverPath: songCover4,
                 audioRef: audioRef,
+                isPlaying: isPlaying,
+                setPlaying: setPlaying,
               },
             ]}
           />
@@ -88,9 +97,9 @@ export const HomePage: FC = () => {
         style={{ borderRadius: 16, overflow: "hidden", margin: 8 }}
       >
         <Footer
-          collapsedSider={collapsedSider}
-          setCollapsedSider={setCollapsedSider}
-          playerProps={{ audioRef }}
+          collapsedSider={showQueue}
+          setCollapsedSider={setShowQueue}
+          playerProps={{ audioRef, isPlaying, setIsPlaying: setPlaying }}
           volumeProps={{ volume, setVolume }}
           queueSettingsProps={{ isRepeat, setRepeat, isShuffle, setShuffle }}
         />

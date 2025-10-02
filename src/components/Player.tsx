@@ -1,36 +1,40 @@
-import { type FC, type RefObject, useState, useEffect } from "react";
+import { type FC, type RefObject, useEffect } from "react";
 import { Button } from "antd";
 import { Play, Pause, SkipBack, SkipForward } from "lucide-react";
 import "./Player.css";
 
 export interface PlayerProps {
   audioRef: RefObject<HTMLAudioElement | null>;
+  isPlaying: boolean;
+  setIsPlaying: (playing: boolean) => void;
 }
 
-export const Player: FC<PlayerProps> = ({ audioRef }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
-
+export const Player: FC<PlayerProps> = ({
+  audioRef,
+  isPlaying,
+  setIsPlaying: setPlaying,
+}) => {
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    const handlePlay = () => setIsPlaying(true);
-    const handlePause = () => setIsPlaying(false);
-    const handleEnded = () => setIsPlaying(false);
+    const handlePlay = () => setPlaying(true);
+    const handlePause = () => setPlaying(false);
+    const handleEnded = () => setPlaying(false);
 
     audio.addEventListener("play", handlePlay);
     audio.addEventListener("pause", handlePause);
     audio.addEventListener("ended", handleEnded);
 
     // Set initial state based on current audio state
-    setIsPlaying(!audio.paused);
+    setPlaying(!audio.paused);
 
     return () => {
       audio.removeEventListener("play", handlePlay);
       audio.removeEventListener("pause", handlePause);
       audio.removeEventListener("ended", handleEnded);
     };
-  }, [audioRef]);
+  }, [audioRef, setPlaying]);
 
   const handlePlayPause = () => {
     const audio = audioRef.current;
@@ -38,10 +42,10 @@ export const Player: FC<PlayerProps> = ({ audioRef }) => {
 
     if (audio.paused) {
       audio.play();
-      setIsPlaying(true);
+      setPlaying(true);
     } else {
       audio.pause();
-      setIsPlaying(false);
+      setPlaying(false);
     }
   };
 
