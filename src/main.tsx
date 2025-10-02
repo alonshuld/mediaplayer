@@ -4,9 +4,9 @@ import "./index.css";
 import App from "./App.tsx";
 import { ConfigProvider } from "antd";
 
-export const primaryColor: string = "#424242";
-export const secondaryColor: string = "#212121";
-export const accentColor: string = "#303030";
+export const primaryColor: string = "#202020";
+export const secondaryColor: string = "black";
+export const accentColor: string = "#121212";
 export const contentColor: string = "white";
 
 createRoot(document.getElementById("root")!).render(

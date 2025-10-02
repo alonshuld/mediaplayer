@@ -18,16 +18,24 @@ export const HomePage: FC = () => {
       >
         <Header />
       </Layout.Header>
-      <Layout>
+      <Layout style={{ marginInline: 8 }}>
         <Layout.Sider
           collapsed={collapsedSider}
           collapsedWidth={0}
-          style={{ borderRadius: 16, overflow: "hidden", marginLeft: 8 }}
+          style={{
+            borderRadius: 16,
+            overflow: "hidden",
+            marginRight: collapsedSider ? 0 : 8,
+          }}
         >
           Sider
         </Layout.Sider>
         <Layout.Content
-          style={{ borderRadius: 16, overflow: "hidden", margin: 8 }}
+          style={{
+            borderRadius: 16,
+            overflow: "hidden",
+            backgroundColor: "#121212",
+          }}
         >
           Content
         </Layout.Content>
