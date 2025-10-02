@@ -100,7 +100,7 @@ export const HomePage: FC = () => {
           collapsedSider={showQueue}
           setCollapsedSider={setShowQueue}
           playerProps={{ audioRef, isPlaying, setIsPlaying: setPlaying }}
-          volumeProps={{ volume, setVolume }}
+          volumeProps={{ volume, setVolume, audioRef }}
           queueSettingsProps={{ isRepeat, setRepeat, isShuffle, setShuffle }}
         />
       </Layout.Footer>
