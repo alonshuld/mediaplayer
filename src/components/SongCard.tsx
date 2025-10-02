@@ -1,4 +1,4 @@
-import { type FC, useState } from "react";
+import { type FC, useState, useRef } from "react";
 import { Card, Image, Typography, Button } from "antd";
 import { PlayCircle } from "lucide-react";
 import "./SongCard.css";
@@ -13,12 +13,16 @@ export interface Song {
   coverPath: string;
 }
 
-export interface SongCardProps {
-  song: Song;
-}
-
-export const SongCard: FC<SongCardProps> = ({ song }) => {
+export const SongCard: FC<Song> = ({ title, artist, songPath, coverPath }) => {
   const [hovered, setHovered] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const handlePlay = () => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio(songPath);
+    }
+    audioRef.current.play();
+  };
 
   return (
     <Card
@@ -31,8 +35,8 @@ export const SongCard: FC<SongCardProps> = ({ song }) => {
         <div className="SongCard-coverWrapper">
           <Image
             preview={false}
-            alt={`${song.title} cover`}
-            src={song.coverPath}
+            alt={`${title} cover`}
+            src={coverPath}
             className="SongCard-cover"
           />
           {hovered && (
@@ -42,14 +46,15 @@ export const SongCard: FC<SongCardProps> = ({ song }) => {
               icon={<PlayCircle size={64} />}
               shape="circle"
               size="large"
+              onClick={handlePlay}
             />
           )}
         </div>
       }
     >
       <Card.Meta
-        title={<Title level={2}>{song.title}</Title>}
-        description={<Title level={3}>{song.artist}</Title>}
+        title={<Title level={2}>{title}</Title>}
+        description={<Title level={3}>{artist}</Title>}
       />
     </Card>
   );

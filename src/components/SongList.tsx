@@ -10,7 +10,7 @@ export const SongList: FC<SongListProps> = ({ songs }) => {
   return (
     <Space wrap>
       {songs.map((song) => (
-        <SongCard key={song.id} song={song} onClick={() => {}} />
+        <SongCard key={song.id} {...song} />
       ))}
     </Space>
   );

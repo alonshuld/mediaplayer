@@ -15,7 +15,7 @@ export const Volume: FC<VolumeProps> = ({ volume, setVolume }) => {
       <Slider
         value={volume}
         onChange={(value) => setVolume(value)}
-        style={{ width: 100, marginLeft: 8 }}
+        style={{ width: 100 }}
       />
     </div>
   );
