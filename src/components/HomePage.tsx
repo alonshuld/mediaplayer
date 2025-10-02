@@ -15,7 +15,6 @@ import "./HomePage.css";
 
 export const HomePage: FC = () => {
   const [collapsedSider, setCollapsedSider] = useState(true);
-  const [isPlaying, setPlaying] = useState(false);
   const [volume, setVolume] = useState(50);
   const [isShuffle, setShuffle] = useState(false);
   const [isRepeat, setRepeat] = useState(false);
@@ -91,7 +90,7 @@ export const HomePage: FC = () => {
         <Footer
           collapsedSider={collapsedSider}
           setCollapsedSider={setCollapsedSider}
-          playerProps={{ isPlaying, setPlaying }}
+          playerProps={{ audioRef }}
           volumeProps={{ volume, setVolume }}
           queueSettingsProps={{ isRepeat, setRepeat, isShuffle, setShuffle }}
         />
