@@ -7,4 +7,26 @@
 
 .SongCard:hover {
     background-color: var(--primary-color);
+    cursor: default;
+}
+
+.SongCard-coverWrapper {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+
+}
+
+.SongCard-cover {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+.SongCard-playBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.75;
 }

@@ -44,6 +44,7 @@ createRoot(document.getElementById("root")!).render(
             defaultActiveColor: contentColor,
             defaultHoverColor: contentColor,
             primaryColor: contentColor,
+            controlHeightLG: 64,
           },
           Slider: {
             trackBg: contentColor,

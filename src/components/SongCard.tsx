@@ -1,5 +1,6 @@
-import { type FC } from "react";
-import { Card, Image, Typography } from "antd";
+import { type FC, useState } from "react";
+import { Card, Image, Typography, Button } from "antd";
+import { PlayCircle } from "lucide-react";
 import "./SongCard.css";
 
 const { Title } = Typography;
@@ -14,25 +15,37 @@ export interface Song {
 
 export interface SongCardProps {
   song: Song;
-  onClick: (song: Song) => void;
 }
 
-export const SongCard: FC<SongCardProps> = ({ song, onClick }) => {
+export const SongCard: FC<SongCardProps> = ({ song }) => {
+  const [hovered, setHovered] = useState(false);
+
   return (
     <Card
       className="SongCard"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       hoverable
       variant="borderless"
       cover={
-        <Image
-          preview={false}
-          alt={`${song.title} cover`}
-          src={song.coverPath}
-          className="SongCard-cover"
-          style={{ borderRadius: 8 }}
-        />
+        <div className="SongCard-coverWrapper">
+          <Image
+            preview={false}
+            alt={`${song.title} cover`}
+            src={song.coverPath}
+            className="SongCard-cover"
+          />
+          {hovered && (
+            <Button
+              className="SongCard-playBtn"
+              type="default"
+              icon={<PlayCircle size={64} />}
+              shape="circle"
+              size="large"
+            />
+          )}
+        </div>
       }
-      onClick={() => onClick(song)}
     >
       <Card.Meta
         title={<Title level={2}>{song.title}</Title>}
